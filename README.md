@@ -24,12 +24,12 @@
 Выполните по SSH:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/DjGreeZ/UniFi-AmneziaWG/v0.3.1/install.sh -o /tmp/awg-install.sh && sh /tmp/awg-install.sh
+curl -fsSL https://raw.githubusercontent.com/DjGreeZ/UniFi-AmneziaWG/v0.3.2/install.sh -o /tmp/awg-install.sh && sh /tmp/awg-install.sh
 ```
 
 В `/data/awg-native` устанавливаются движки AWG, панель, службы запуска и восстановления. Оригинальные файлы интерфейса сохраняются для удаления. Компилировать ничего не нужно.
 
-**Переход с 0.2.x:** автоматического переноса подключений нет. Сохраните исходные AWG-конфиги, удалите старую интеграцию через `uninstall.sh --purge` и связанные VPN-профили и политики UniFi. Затем установите 0.3.1 и добавьте подключения заново.
+**Переход с 0.2.x:** автоматического переноса подключений нет. Сохраните исходные AWG-конфиги, удалите старую интеграцию через `uninstall.sh --purge` и связанные VPN-профили и политики UniFi. Затем установите 0.3.2 и добавьте подключения заново.
 
 ## Использование
 
@@ -58,4 +58,4 @@ sh /data/awg-native/uninstall.sh --purge
 
 После удаления обновите страницу.
 
-Код, исходники движков и лицензии — в архиве `AmneziaWG-UniFi-v0.3.1-source.tar.gz` на [странице релиза](https://github.com/DjGreeZ/UniFi-AmneziaWG/releases/tag/v0.3.1).
+Код, исходники движков и лицензии — в архиве `AmneziaWG-UniFi-v0.3.2-source.tar.gz` на [странице релиза](https://github.com/DjGreeZ/UniFi-AmneziaWG/releases/tag/v0.3.2).
