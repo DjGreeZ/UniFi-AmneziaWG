@@ -1,3 +1,9 @@
+<h2 id="amnezia-unifi">Can I install Amnezia VPN on UniFi?</h2>
+<p>On the tested UniFi gateways, this project lets you connect to an <strong>AmneziaWG</strong> server. It adds an AWG protocol client and panel to UniFi OS; devices on your network use the VPN through gateway routing policies. Start with the <a href="{{langbase}}installation/">step-by-step AmneziaWG installation guide for UniFi</a> and check your model and firmware versions.</p>
+
+<h2 id="wireguard-import">Should I import my Amnezia config into WireGuard or AmneziaWG Client?</h2>
+<p>Import the original AWG file into <strong>AmneziaWG Client</strong>. The integration automatically creates a native WireGuard profile as a local adapter. Importing the original configuration into a standard WireGuard client does not replace the AmneziaWG engine. If you only have a <code>vpn://</code> key, obtain a <a href="{{langbase}}installation/#config">native .conf file for your router</a> first.</p>
+
 <h2 id="server">Do I need a separate VPN server?</h2>
 <p>Yes. This project installs an AmneziaWG client on a UniFi gateway. You need a reachable AWG server and its client <code>.conf</code> file. The project does not provide VPN servers, subscriptions or accounts.</p>
 
