@@ -75,8 +75,8 @@ def render(lang, key, page):
 {alternates}<link rel="alternate" hreflang="x-default" href="{url('ru', key)}">
 <meta property="og:type" content="website"><meta property="og:site_name" content="UniFi-AmneziaWG"><meta property="og:locale" content="{'ru_RU' if ru else 'en_US'}">
 <meta property="og:title" content="{escape(page['title'], quote=True)}"><meta property="og:description" content="{escape(page['description'], quote=True)}"><meta property="og:url" content="{canonical}">
-<meta property="og:image" content="{BASE}assets/social.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="AmneziaWG for UniFi — native routing, failover, traffic statistics">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}assets/social.png">
+<meta property="og:image" content="{BASE}assets/banner.png"><meta property="og:image:width" content="1672"><meta property="og:image:height" content="941"><meta property="og:image:alt" content="{'Баннер проекта AmneziaWG на UniFi; требуется конфиг AWG' if ru else 'AmneziaWG on UniFi project banner; requires an AWG'} {AWG_VERSION}{'' if ru else ' configuration'}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{BASE}assets/banner.png"><meta name="twitter:image:alt" content="{'AmneziaWG на UniFi; требуется конфиг AWG' if ru else 'AmneziaWG on UniFi; requires an AWG'} {AWG_VERSION}{'' if ru else ' configuration'}">
 <link rel="icon" type="image/svg+xml" href="{PREFIX}assets/favicon.svg"><link rel="stylesheet" href="{PREFIX}assets/site.css">
 {tags}<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False).replace('</', '<\\/')}</script><script src="{PREFIX}assets/site.js" defer></script>
 </head><body><a class="skip-link" href="#main">{'К содержимому' if ru else 'Skip to content'}</a>
