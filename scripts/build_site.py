@@ -14,6 +14,7 @@ BASE = CONFIG['base_url']
 PREFIX = urlparse(BASE).path
 REPO = 'https://github.com/DjGreeZ/UniFi-AmneziaWG'
 VERSION = CONFIG['version']
+AWG_VERSION = CONFIG['awg_config_version']
 PAGES = CONFIG['pages']
 
 def url(lang, key='home'):
@@ -30,7 +31,7 @@ def render(lang, key, page):
     other = 'en' if ru else 'ru'
     language = f'<a class="language" href="{local(other, key)}" lang="{other}" hreflang="{other}" aria-label="' + ('Read this page in English' if ru else 'Читать страницу по-русски') + '">' + ('EN' if ru else 'RU') + '</a>'
     source = (SOURCE / 'content' / lang / (key + '.html')).read_text(encoding='utf-8')
-    content = source.replace('{{base}}', PREFIX).replace('{{langbase}}', local(lang)).replace('{{version}}', VERSION)
+    content = source.replace('{{base}}', PREFIX).replace('{{langbase}}', local(lang)).replace('{{version}}', VERSION).replace('{{awg_version}}', AWG_VERSION)
     project_id = BASE + '#project'
     schema = {'@context': 'https://schema.org', '@graph': [
         {'@type': 'SoftwareSourceCode', '@id': project_id, 'name': 'UniFi-AmneziaWG',
@@ -55,7 +56,7 @@ def render(lang, key, page):
           <div class="hero-copy"><p class="eyebrow"><span class="status-dot"></span> {'НЕЗАВИСИМЫЙ ПРОЕКТ ДЛЯ UNIFI' if ru else 'INDEPENDENT PROJECT FOR UNIFI'}</p>
           <h1>{heading}</h1><p class="hero-lead">{escape(page['lead'])}</p>
           <div class="actions"><a class="button primary" href="{local(lang, 'installation')}">{'Установить' if ru else 'Get started'} <span aria-hidden="true">↗</span></a><a class="button secondary" href="{REPO}">{'Код на GitHub' if ru else 'View on GitHub'} <span aria-hidden="true">↗</span></a></div>
-          <p class="hero-note"><a href="{release}">v{VERSION}</a> · {'Тестовая версия' if ru else 'Experimental release'} · ARM64 · IPv4</p></div>
+          <p class="hero-note"><a href="{release}">v{VERSION}</a> · {'Тестовая версия' if ru else 'Experimental release'} · AWG {AWG_VERSION} · ARM64 · IPv4</p></div>
           <div class="hero-diagram" aria-label="{'Схема подключения' if ru else 'Connection overview'}"><div class="diagram-caption">{'МАРШРУТ ВАШЕГО ТРАФИКА' if ru else 'YOUR TRAFFIC, ROUTED'}</div>
           <div class="diagram-node"><span class="node-number">01</span><div><strong>UniFi</strong><small>{'Устройства и политики' if ru else 'Devices & routing policies'}</small></div><span class="node-icon" aria-hidden="true">↗</span></div>
           <div class="diagram-line"><span>LOCAL WIREGUARD</span></div>
@@ -80,6 +81,7 @@ def render(lang, key, page):
 {tags}<script type="application/ld+json">{json.dumps(schema, ensure_ascii=False).replace('</', '<\\/')}</script><script src="{PREFIX}assets/site.js" defer></script>
 </head><body><a class="skip-link" href="#main">{'К содержимому' if ru else 'Skip to content'}</a>
 <header class="site-header"><div class="wrap header-inner"><a class="brand" href="{local(lang)}" aria-label="UniFi-AmneziaWG {'главная' if ru else 'home'}"><span class="brand-mark" aria-hidden="true">a<span>↗</span></span><span>UniFi<span class="brand-slash">/</span>AmneziaWG</span></a><nav class="main-nav" aria-label="{'Основная навигация' if ru else 'Main navigation'}">{nav}</nav><div class="header-actions">{language}<a class="github-link" href="{REPO}" aria-label="GitHub repository">GitHub <span aria-hidden="true">↗</span></a></div></div></header>
+<div class="protocol-notice"><div class="wrap"><strong>{'Требуется конфиг' if ru else 'Requires an'} AmneziaWG {AWG_VERSION} { 'в формате .conf.' if ru else '.conf configuration.'}</strong><span>{'Версия интеграции:' if ru else 'Integration version:'} {VERSION}.</span><a href="{local(lang, 'installation')}#config">{'Как получить конфиг' if ru else 'Get a configuration'} →</a></div></div>
 {main}
 <footer class="site-footer wrap"><div><a class="footer-brand" href="{local(lang)}">UniFi / AmneziaWG</a><p>{'Независимая интеграция. Не связана с Ubiquiti.' if ru else 'Independent integration. Not affiliated with Ubiquiti.'}</p><p>Developed by <a href="https://github.com/DjGreeZ">Roman Tselischev · DjGreeZ</a></p></div><nav aria-label="{'Дополнительные ссылки' if ru else 'More links'}"><a href="{release}">{'Релиз' if ru else 'Release'} v{VERSION}</a><a href="{REPO}/issues">{'Сообщить о проблеме' if ru else 'Report an issue'}</a><a href="{local(lang, 'citation')}">{'Как сослаться' if ru else 'How to cite'}</a></nav></footer>
 </body></html>'''

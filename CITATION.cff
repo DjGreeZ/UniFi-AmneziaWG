@@ -11,7 +11,7 @@ version: "0.3.2"
 date-released: 2026-11-05
 repository-code: "https://github.com/DjGreeZ/UniFi-AmneziaWG"
 url: "https://djgreez.github.io/UniFi-AmneziaWG/"
-abstract: "AmneziaWG integration for the UniFi interface, with multiple VPN connections, backup servers, routing policy integration, and connection statistics."
+abstract: "AmneziaWG integration for the UniFi interface, requiring native AmneziaWG 3.1 configurations, with multiple VPN connections, backup servers, routing policy integration, and connection statistics."
 keywords:
   - AmneziaWG
   - UniFi

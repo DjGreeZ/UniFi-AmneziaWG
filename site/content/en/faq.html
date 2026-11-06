@@ -1,3 +1,6 @@
+<h2 id="config-version">Which AWG configuration version do I need?</h2>
+<p>You need a <strong>native AmneziaWG 3.1 configuration</strong> in <code>.conf</code> format. Check the protocol version on your server or confirm it with your VPN provider before exporting. <strong>0.3.2</strong> is the UniFi-AmneziaWG integration version; <strong>3.1</strong> is the required AWG version. See <a href="{{langbase}}installation/#config">how to get an AWG 3.1 configuration</a>.</p>
+
 <h2 id="amnezia-unifi">Can I install Amnezia VPN on UniFi?</h2>
 <p>On the tested UniFi gateways, this project lets you connect to an <strong>AmneziaWG</strong> server. It adds an AWG protocol client and panel to UniFi OS; devices on your network use the VPN through gateway routing policies. Start with the <a href="{{langbase}}installation/">step-by-step AmneziaWG installation guide for UniFi</a> and check your model and firmware versions.</p>
 
@@ -10,8 +13,17 @@
 <h2 id="connections">How many connections can I add?</h2>
 <p>Version 0.3.2 supports up to four AWG connections. The panel also checks UniFi’s limit of four active VPN clients, including other VPN connections. Each AWG connection needs a separate client configuration with a unique private key; reusing the same key is rejected.</p>
 
-<h2 id="backup">Do routing policies change during failover?</h2>
-<p>No. The same native UniFi WireGuard profile remains in place while its AWG exit changes. The assigned backup must be enabled and pass its connectivity check. It uses one of the four connection slots. See <a href="{{langbase}}architecture/#failover">how failover works</a> for details.</p>
+<h2 id="models">Does AmneziaWG work on UDM SE or the original UDR?</h2>
+<p>The published testing list covers <strong>UDM, UDR7 and UDM Pro</strong> with the specified UniFi versions. UDM SE and the original UDR have not been separately confirmed. A matching processor architecture or similar device name does not guarantee compatibility: the installer also checks interface files. See the <a href="{{langbase}}installation/#compatibility">compatibility matrix</a>.</p>
+
+<h2 id="device-routing">How do I route selected UniFi devices through Amnezia?</h2>
+<p>After importing an AWG 3.1 configuration, select the created VPN profile in a native UniFi routing policy and assign the intended devices or networks. Enable Kill Switch. Test the external IP from a device assigned to the policy. Follow the <a href="{{langbase}}installation/#connect">first connection setup</a> for the full sequence.</p>
+
+<h2 id="backup">How do I set up an AmneziaWG backup server in UniFi?</h2>
+<p>Add a second connection with its own AWG 3.1 configuration and select it as the primary connection's backup. The backup must be enabled and pass its connectivity check; it uses one of the four connection slots. The same native UniFi WireGuard profile remains in place during failover, so routing policies do not need to change. See <a href="{{langbase}}architecture/#failover">how failover works</a> for details.</p>
+
+<h2 id="not-connecting">What should I check if AmneziaWG is not connecting on UniFi?</h2>
+<p>Check that the server and native configuration use AWG 3.1, that the server is reachable, and that <code>AllowedIPs</code> includes <code>1.1.1.1</code>. Each connection needs a separate client key. If the tunnel works but a particular device uses a direct connection, check its routing policy and IPv6. The <a href="{{langbase}}installation/#troubleshooting">troubleshooting table</a> distinguishes these cases.</p>
 
 <h2 id="dns">Why is the DNS setting from my AWG file not applied?</h2>
 <p>LAN DNS is configured in UniFi. The integration does not copy DNS settings from an imported AWG file to your local network. Configure routing policies and DNS for the relevant devices in UniFi.</p>
