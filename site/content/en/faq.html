@@ -1,0 +1,29 @@
+<h2 id="server">Do I need a separate VPN server?</h2>
+<p>Yes. This project installs an AmneziaWG client on a UniFi gateway. You need a reachable AWG server and its client <code>.conf</code> file. The project does not provide VPN servers, subscriptions or accounts.</p>
+
+<h2 id="connections">How many connections can I add?</h2>
+<p>Version 0.3.2 supports up to four AWG connections. The panel also checks UniFi’s limit of four active VPN clients, including other VPN connections. Each AWG connection needs a separate client configuration with a unique private key; reusing the same key is rejected.</p>
+
+<h2 id="backup">Do routing policies change during failover?</h2>
+<p>No. The same native UniFi WireGuard profile remains in place while its AWG exit changes. The assigned backup must be enabled and pass its connectivity check. It uses one of the four connection slots. See <a href="{{langbase}}architecture/#failover">how failover works</a> for details.</p>
+
+<h2 id="dns">Why is the DNS setting from my AWG file not applied?</h2>
+<p>LAN DNS is configured in UniFi. The integration does not copy DNS settings from an imported AWG file to your local network. Configure routing policies and DNS for the relevant devices in UniFi.</p>
+
+<h2 id="ipv6">Is IPv6 supported?</h2>
+<p>This version does not support IPv6 over the VPN. A connection requires one IPv4 tunnel address. Do not assume that device IPv6 traffic will pass through AWG.</p>
+
+<h2 id="cloud">Why is the panel missing on unifi.ui.com?</h2>
+<p>The integration adds a section to the local UniFi interface. Open the gateway’s local IP address and go to <strong>Settings → VPN → AmneziaWG Client</strong>. This section is not available through the <code>unifi.ui.com</code> cloud portal.</p>
+
+<h2 id="remote">Can I access the AWG panel remotely?</h2>
+<p>Yes, after enabling remote access in the local panel. It uses a separate password, an IP or subnet allowlist and HTTPS with a self-signed certificate. A reachable IPv4 address and port are required. The URL must use <code>https://IPv4:port</code>; domain names are not currently supported. Remote access is disabled by default and exposes only the AWG panel.</p>
+
+<h2 id="health">Why does the check need 1.1.1.1?</h2>
+<p>The service checks HTTPS connectivity to <code>1.1.1.1</code> through the tunnel, so that address must be included in <code>AllowedIPs</code>. The displayed check time measures the time until the HTTPS response starts. It is not an ICMP ping or a VPN throughput test.</p>
+
+<h2 id="updates">Can I update UniFi OS and Network?</h2>
+<p>Automatic updates have not been tested; disable them before installation. The installer checks UI files as well as version numbers. A newer UniFi release may be incompatible. Recovery after a reboot does not guarantee recovery after an update. See the <a href="{{langbase}}installation/#compatibility">compatibility requirements</a>.</p>
+
+<h2 id="migration">How do I upgrade from 0.2.x?</h2>
+<p>There is no automatic migration. Save your original AWG configurations, remove the old integration and its associated VPN profiles and policies, then install 0.3.2 and add the connections again. Follow the steps in the <a href="{{langbase}}installation/">installation guide</a>.</p>

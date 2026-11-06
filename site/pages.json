@@ -1,0 +1,28 @@
+{
+  "base_url": "https://djgreez.github.io/UniFi-AmneziaWG/",
+  "version": "0.3.2",
+  "release_date": "2026-11-05",
+  "updated": "2026-11-06",
+  "pages": {
+    "home": {
+      "ru": {"title": "AmneziaWG для UniFi — VPN-клиент для UDR7, UDM и UDM Pro", "heading": "AmneziaWG.\nВнутри UniFi.", "description": "Клиент AmneziaWG в интерфейсе UniFi: до четырёх подключений, штатные политики маршрутизации, резервный сервер и статистика. Установка и устройство проекта.", "lead": "Подключайте AmneziaWG, назначайте трафик через привычные политики UniFi и переключайтесь на резервный сервер в одном интерфейсе.", "label": "Обзор"},
+      "en": {"title": "AmneziaWG for UniFi — VPN client for UDR7, UDM and UDM Pro", "heading": "AmneziaWG.\nInside UniFi.", "description": "AmneziaWG in the UniFi interface: up to four connections, native routing policies, a backup server and traffic statistics. Installation and architecture.", "lead": "Connect to AmneziaWG, route traffic with familiar UniFi policies and switch to a backup server from one interface.", "label": "Overview"}
+    },
+    "installation": {
+      "ru": {"title": "Установка AmneziaWG на UniFi UDR7, UDM и UDM Pro", "heading": "От конфига до подключения.", "description": "Установка UniFi-AmneziaWG 0.3.2 по SSH: совместимость, импорт AWG-конфига, политики, Kill Switch, переход с 0.2.x и удаление.", "lead": "Совместимость, установка по SSH и первое подключение. Инструкция для версии интеграции 0.3.2.", "label": "Установка"},
+      "en": {"title": "Install AmneziaWG on UniFi UDR7, UDM and UDM Pro", "heading": "From config to connection.", "description": "Install UniFi-AmneziaWG 0.3.2 over SSH: compatibility, configuration import, routing policies, Kill Switch, migration from 0.2.x and removal.", "lead": "Compatibility, SSH installation and your first connection. Instructions for integration version 0.3.2.", "label": "Installation"}
+    },
+    "architecture": {
+      "ru": {"title": "Как работает UniFi-AmneziaWG — WireGuard, маршрутизация и резерв", "heading": "Знакомые политики.\nДругой VPN-транспорт.", "description": "Архитектура UniFi-AmneziaWG 0.3.2: локальный WireGuard-переходник, сетевое пространство awgm, движок AmneziaWG, failover и восстановление.", "lead": "Разбор версии 0.3.2 по опубликованным исходникам: как трафик попадает из штатного VPN-профиля в AmneziaWG.", "label": "Как работает"},
+      "en": {"title": "How UniFi-AmneziaWG works — WireGuard, routing and failover", "heading": "Familiar policies.\nA different VPN transport.", "description": "UniFi-AmneziaWG 0.3.2 architecture: a local WireGuard adapter, the awgm network namespace, AmneziaWG engine, failover and recovery.", "lead": "A source-based explanation of version 0.3.2: how traffic reaches AmneziaWG through a native UniFi VPN profile.", "label": "Architecture"}
+    },
+    "faq": {
+      "ru": {"title": "AmneziaWG для UniFi: вопросы о DNS, IPv6, резерве и обновлениях", "heading": "Ответы перед установкой.", "description": "Ответы о UniFi-AmneziaWG: нужен ли VPN-сервер, работают ли IPv6 и unifi.ui.com, где настроить DNS, как включить резерв и внешний доступ.", "lead": "Практические ограничения и поведение интеграции, которые стоит знать заранее.", "label": "Вопросы"},
+      "en": {"title": "AmneziaWG for UniFi FAQ — DNS, IPv6, failover and updates", "heading": "Before you install.", "description": "UniFi-AmneziaWG FAQ: VPN server requirements, IPv6, unifi.ui.com, DNS, backup connections, remote access and UniFi updates.", "lead": "Practical limitations and integration behavior worth understanding before installation.", "label": "FAQ"}
+    },
+    "citation": {
+      "ru": {"title": "UniFi-AmneziaWG — автор, исходники и цитирование", "heading": "Сослаться на проект.", "description": "Автор UniFi-AmneziaWG Roman Tselischev (DjGreeZ), версия 0.3.2, дата релиза, исходный код и постоянная ссылка для цитирования.", "lead": "Постоянные ссылки и сведения о версии для статей, инструкций и технических обзоров.", "label": "О проекте"},
+      "en": {"title": "UniFi-AmneziaWG — author, source code and citation", "heading": "Reference the project.", "description": "UniFi-AmneziaWG by Roman Tselischev (DjGreeZ): version 0.3.2, release date, source code and permanent citation links.", "lead": "Version information and permanent links for articles, tutorials and technical reviews.", "label": "About & citation"}
+    }
+  }
+}

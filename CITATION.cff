@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use or describe UniFi-AmneziaWG, please cite this software using the metadata below."
+type: software
+title: "UniFi-AmneziaWG"
+authors:
+  - family-names: "Tselischev"
+    given-names: "Roman"
+    alias: "DjGreeZ"
+    website: "https://github.com/DjGreeZ"
+version: "0.3.2"
+date-released: 2026-11-05
+repository-code: "https://github.com/DjGreeZ/UniFi-AmneziaWG"
+url: "https://djgreez.github.io/UniFi-AmneziaWG/"
+abstract: "AmneziaWG integration for the UniFi interface, with multiple VPN connections, backup servers, routing policy integration, and connection statistics."
+keywords:
+  - AmneziaWG
+  - UniFi
+  - WireGuard
+  - VPN
+  - UDR7
+  - UDM

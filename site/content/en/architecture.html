@@ -1,0 +1,30 @@
+<h2 id="traffic">How traffic reaches the VPN</h2>
+<p>The integration connects UniFi’s native WireGuard client to the AmneziaWG engine. UniFi selects devices and traffic through its routing policies; a local service forwards that traffic to an external AWG server.</p>
+<ol class="flow">
+  <li><strong>LAN device</strong><span>A UniFi routing policy selects traffic for the VPN.</span></li>
+  <li><strong>Native WireGuard profile</strong><span>Sends traffic to the local address <code>127.0.0.1</code>.</span></li>
+  <li><strong>Local adapter</strong><span>The <code>awgb1…4</code> interface receives traffic inside the <code>awgm</code> network namespace.</span></li>
+  <li><strong>AmneziaWG engine</strong><span>A routing table selects the primary or backup <code>awgo1…4</code> interface.</span></li>
+  <li><strong>External AWG server</strong><span>Accepts the VPN connection using the imported client configuration.</span></li>
+</ol>
+<p>Each connection gets its own local adapter keys and UniFi profile. Separate routing tables and NAT operate inside <code>awgm</code>. The <code>amneziawg-go</code> engine runs in userspace and comes prebuilt, so no compilation on the gateway is required.</p>
+
+<h2 id="components">Components in version 0.3.2</h2>
+<div class="table-scroll"><table>
+  <thead><tr><th>Component</th><th>Role</th></tr></thead>
+  <tbody>
+    <tr><td><code>service.py</code></td><td>Starts tunnels, checks connectivity, manages the local WireGuard adapter and switches routes.</td></tr>
+    <tr><td><code>panel-module.js</code>, <code>panel_service.py</code></td><td>Provides the UniFi panel, remote access settings and the standalone AWG panel API.</td></tr>
+    <tr><td><code>telemetry.py</code></td><td>Records transfer rates, monthly traffic and 24-hour availability history in a local SQLite database.</td></tr>
+    <tr><td><code>maintain.py</code>, <code>recovery.py</code></td><td>Maintains recognized UI changes, restores missing files and starts services.</td></tr>
+  </tbody>
+</table></div>
+
+<h2 id="failover">How failover works</h2>
+<p>The service checks HTTPS connectivity to <code>1.1.1.1</code> through each tunnel and checks for a handshake. Two failed checks mark the primary tunnel unavailable. If its assigned backup is enabled and healthy, the route switches to that connection.</p>
+<p>The native UniFi WireGuard profile stays in place, preserving its routing policies. With automatic return enabled, three successful checks of the primary allow traffic to switch back. Switching time depends on how long the checks take; there is no guaranteed interval. The service does not recursively follow a chain of backup connections.</p>
+<aside class="callout"><p>If no usable exit is available, the service installs a blocking route. Also enable UniFi’s native <strong>Kill Switch</strong> for the routing policy, as described in the <a href="{{langbase}}installation/">installation guide</a>.</p></aside>
+
+<h2 id="recovery">Reboots and updates</h2>
+<p>A local copy of the components can restore missing files and services after a reboot. UI restoration applies only to recognized UniFi files. Unknown updated files are not replaced with older backups.</p>
+<aside class="callout warning"><p>Recovery does not guarantee compatibility with a new UniFi OS or Network release. Automatic updates have not been tested. Check <a href="{{langbase}}installation/#compatibility">compatibility</a> and keep a backup before making changes.</p></aside>

@@ -1,5 +1,7 @@
 # AmneziaWG для UniFi
 
+[Сайт проекта](https://djgreez.github.io/UniFi-AmneziaWG/) · [Установка](https://djgreez.github.io/UniFi-AmneziaWG/installation/) · [Как работает](https://djgreez.github.io/UniFi-AmneziaWG/architecture/) · [English](https://djgreez.github.io/UniFi-AmneziaWG/en/)
+
 AmneziaWG в штатном интерфейсе UDR7/UDM/UDM Pro/UDM SE итд. Можно добавить до четырёх подключений, назначить каждому свои политики UniFi и выбрать резервный сервер. В панели есть статистика, история доступности и события переключения.
 
 <img width="1512" height="833" alt="Снимок экрана — 2026-11-05 в 05 10 18" src="https://github.com/user-attachments/assets/aa906a95-d152-44b0-8dd7-730e462857ae" />
