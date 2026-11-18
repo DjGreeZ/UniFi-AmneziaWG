@@ -9,7 +9,7 @@
 </ol>
 <p>Each connection gets its own local adapter keys and UniFi profile. Separate routing tables and NAT operate inside <code>awgm</code>. The <code>amneziawg-go</code> engine runs in userspace and comes prebuilt, so no compilation on the gateway is required.</p>
 
-<h2 id="components">Components in version 0.3.2</h2>
+<h2 id="components">Components in version 0.3.3</h2>
 <div class="table-scroll"><table>
   <thead><tr><th>Component</th><th>Role</th></tr></thead>
   <tbody>
@@ -26,5 +26,5 @@
 <aside class="callout"><p>If no usable exit is available, the service installs a blocking route. Also enable UniFi’s native <strong>Kill Switch</strong> for the routing policy, as described in the <a href="{{langbase}}installation/">installation guide</a>.</p></aside>
 
 <h2 id="recovery">Reboots and updates</h2>
-<p>A local copy of the components can restore missing files and services after a reboot. UI restoration applies only to recognized UniFi files. Unknown updated files are not replaced with older backups.</p>
+<p>A local copy of the components can restore missing files and services after a reboot. After a Network change, the installed adapters check the new UI structure and reapply compatible integration patches. Recovery requires an intact copy in <code>/data/awg-native/recovery</code> and an available startup mechanism. Unknown updated files are not replaced with older backups.</p>
 <aside class="callout warning"><p>Recovery does not guarantee compatibility with a new UniFi OS or Network release. Automatic updates have not been tested. Check <a href="{{langbase}}installation/#compatibility">compatibility</a> and keep a backup before making changes.</p></aside>
